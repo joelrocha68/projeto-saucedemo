@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.10.12 on linux)" generated="2025-11-15T14:22:39.674284" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="/home/joel/Documentos/projeto-saucedemo/tests">
+<suite id="s1-s1" name="Saucedemo Tests" source="/home/joel/Documentos/projeto-saucedemo/tests/saucedemo_tests.robot">
+<test id="s1-s1-t1" name="Cenário 1: Fluxo de compra de usuário padrão standard_user" line="9">
+<kw name="Open Sauce Login Page" owner="saucedemo_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:39.826330" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<arg>${SAUCE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage");add_argument("--remote-debugging-port=9222");add_argument("--disable-gpu");add_argument("--headless=new")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-11-15T14:22:39.826054" elapsed="1.372283"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.199010" elapsed="0.018418"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_USERNAME}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.217734" elapsed="0.023350"/>
+</kw>
+<doc>Abre o browser e navega até a página de login</doc>
+<status status="PASS" start="2025-11-15T14:22:39.825377" elapsed="1.416035"/>
+</kw>
+<kw name="Login As User" owner="saucedemo_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.243028" level="INFO">Typing text 'standard_user' into text field 'xpath=//input[@data-test='username']'.</msg>
+<arg>${INPUT_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.242547" elapsed="0.113789"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.356873" level="INFO">Typing text 'secret_sauce' into text field 'xpath=//input[@data-test='password']'.</msg>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.356565" elapsed="0.071283"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.428357" level="INFO">Clicking button 'xpath=//input[@data-test='login-button']'.</msg>
+<arg>${BUTTON_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.428066" elapsed="0.094720"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.523102" elapsed="0.016012"/>
+</kw>
+<arg>${STANDARD_USER}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Realiza login com o usuário e senha</doc>
+<status status="PASS" start="2025-11-15T14:22:41.241887" elapsed="0.297389"/>
+</kw>
+<kw name="Add Item By Index" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:41.540175" level="INFO">${btn_inventory} = xpath=(//button[contains(@class,"btn_inventory")])[2]</msg>
+<var>${btn_inventory}</var>
+<arg>${BTN_INVENTORY_BY_INDEX}</arg>
+<arg>{btn_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.539927" elapsed="0.000282"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${btn_inventory}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.540359" elapsed="0.021019"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:41.562010" level="INFO">${item_name_locator} = xpath=(//div[contains(@class,'inventory_item_name')])[2]</msg>
+<var>${item_name_locator}</var>
+<arg>${INVENTORY_ITEM_BY_INDEX}</arg>
+<arg>{item_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.561658" elapsed="0.000416"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.587913" level="INFO">${item_name} = Sauce Labs Bike Light</msg>
+<var>${item_name}</var>
+<arg>${item_name_locator}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.562232" elapsed="0.025746"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.588511" level="INFO">Clicking element 'xpath=(//button[contains(@class,"btn_inventory")])[2]'.</msg>
+<arg>${btn_inventory}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.588207" elapsed="0.047585"/>
+</kw>
+<return>
+<value>${item_name}</value>
+<status status="PASS" start="2025-11-15T14:22:41.635939" elapsed="0.000083"/>
+</return>
+<msg time="2025-11-15T14:22:41.636251" level="INFO">${item1} = Sauce Labs Bike Light</msg>
+<var>${item1}</var>
+<arg>2</arg>
+<doc>Adiciona um produto no carrinho baseado no índice da lista</doc>
+<status status="PASS" start="2025-11-15T14:22:41.539590" elapsed="0.096695"/>
+</kw>
+<kw name="Add Item By Index" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:41.637129" level="INFO">${btn_inventory} = xpath=(//button[contains(@class,"btn_inventory")])[3]</msg>
+<var>${btn_inventory}</var>
+<arg>${BTN_INVENTORY_BY_INDEX}</arg>
+<arg>{btn_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.636891" elapsed="0.000269"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${btn_inventory}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.637303" elapsed="0.022276"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:41.660342" level="INFO">${item_name_locator} = xpath=(//div[contains(@class,'inventory_item_name')])[3]</msg>
+<var>${item_name_locator}</var>
+<arg>${INVENTORY_ITEM_BY_INDEX}</arg>
+<arg>{item_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.659890" elapsed="0.000505"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.675175" level="INFO">${item_name} = Sauce Labs Bolt T-Shirt</msg>
+<var>${item_name}</var>
+<arg>${item_name_locator}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.660564" elapsed="0.014675"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.675742" level="INFO">Clicking element 'xpath=(//button[contains(@class,"btn_inventory")])[3]'.</msg>
+<arg>${btn_inventory}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.675468" elapsed="0.041094"/>
+</kw>
+<return>
+<value>${item_name}</value>
+<status status="PASS" start="2025-11-15T14:22:41.716704" elapsed="0.000068"/>
+</return>
+<msg time="2025-11-15T14:22:41.717024" level="INFO">${item2} = Sauce Labs Bolt T-Shirt</msg>
+<var>${item2}</var>
+<arg>3</arg>
+<doc>Adiciona um produto no carrinho baseado no índice da lista</doc>
+<status status="PASS" start="2025-11-15T14:22:41.636578" elapsed="0.080484"/>
+</kw>
+<kw name="Remove Item By Name" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:41.718483" level="INFO">${inventory_remove_btn} = xpath=//div[@class="inventory_item"][.//div[text()="Sauce Labs Bike Light"]]//button[text()="Remove"]</msg>
+<var>${inventory_remove_btn}</var>
+<arg>${BTN_REMOVE_INVENTORY_ITEM_BY_NAME}</arg>
+<arg>{inventory_item}</arg>
+<arg>${item}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.718059" elapsed="0.000531"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.719105" level="INFO">Clicking element 'xpath=//div[@class="inventory_item"][.//div[text()="Sauce Labs Bike Light"]]//button[text()="Remove"]'.</msg>
+<arg>${inventory_remove_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.718826" elapsed="0.058846"/>
+</kw>
+<arg>${item1}</arg>
+<doc>Remove um produto do carrinho pelo nome</doc>
+<status status="PASS" start="2025-11-15T14:22:41.717452" elapsed="0.060379"/>
+</kw>
+<kw name="Go To Cart" owner="saucedemo_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.778744" level="INFO">Clicking element 'xpath=//div[@id='shopping_cart_container']'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.778503" elapsed="0.058724"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CART_LIST}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.837445" elapsed="0.018072"/>
+</kw>
+<doc>Acessa o carrinho de compras</doc>
+<status status="PASS" start="2025-11-15T14:22:41.778131" elapsed="0.077527"/>
+</kw>
+<kw name="Checkout Complete Order" owner="saucedemo_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.856564" level="INFO">Clicking button 'xpath=//button[@data-test='checkout']'.</msg>
+<arg>${CHECKOUT_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.856333" elapsed="0.064986"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_INFO}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.921548" elapsed="0.015293"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.937357" level="INFO">Typing text 'Test' into text field 'xpath=//input[@id='first-name']'.</msg>
+<arg>${FIRST_NAME}</arg>
+<arg>Test</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.937062" elapsed="0.058211"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:41.995787" level="INFO">Typing text 'User' into text field 'xpath=//input[@data-test='lastName']'.</msg>
+<arg>${LAST_NAME}</arg>
+<arg>User</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:41.995504" elapsed="0.053987"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:42.049990" level="INFO">Typing text '00000000' into text field 'xpath=//input[@data-test='postalCode']'.</msg>
+<arg>${POSTAL_CODE}</arg>
+<arg>00000000</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.049708" elapsed="0.062930"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:42.113159" level="INFO">Clicking button 'xpath=//input[@data-test='continue']'.</msg>
+<arg>${CONTINUE_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.112872" elapsed="0.058816"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_SUMMARY}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.171923" elapsed="0.013055"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:42.185487" level="INFO">Clicking button 'xpath=//button[@data-test='finish']'.</msg>
+<arg>${FINISH_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.185206" elapsed="0.055732"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_COMPLETED}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.241216" elapsed="0.014100"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:42.323822" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Checkout_Completed_Cen%C3%A1rio%201%3A%20Fluxo%20de%20compra%20de%20usu%C3%A1rio%20padr%C3%A3o%20standard_user.png"&gt;&lt;img src="Checkout_Completed_Cen%C3%A1rio%201%3A%20Fluxo%20de%20compra%20de%20usu%C3%A1rio%20padr%C3%A3o%20standard_user.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Checkout_Completed_${TEST NAME}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.255548" elapsed="0.068444"/>
+</kw>
+<doc>Realiza o fluxo de checkout com dados do usuário</doc>
+<status status="PASS" start="2025-11-15T14:22:41.855997" elapsed="0.468137"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.324569" elapsed="0.054241"/>
+</kw>
+<doc>Faça login como usuário standard_user, adicione produtos, remova o primeiro adicionado e finalize o pedido.</doc>
+<status status="PASS" start="2025-11-15T14:22:39.824035" elapsed="2.555007"/>
+</test>
+<test id="s1-s1-t2" name="Cenário 2: Fluxo de compra do usuário performance_glitch_user" line="19">
+<kw name="Open Sauce Login Page" owner="saucedemo_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:42.381946" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<arg>${SAUCE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage");add_argument("--remote-debugging-port=9222");add_argument("--disable-gpu");add_argument("--headless=new")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.380575" elapsed="1.296885"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-15T14:22:43.678000" elapsed="0.022413"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_USERNAME}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:43.700848" elapsed="0.018498"/>
+</kw>
+<doc>Abre o browser e navega até a página de login</doc>
+<status status="PASS" start="2025-11-15T14:22:42.380105" elapsed="1.339390"/>
+</kw>
+<kw name="Login As User" owner="saucedemo_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:43.720486" level="INFO">Typing text 'performance_glitch_user' into text field 'xpath=//input[@data-test='username']'.</msg>
+<arg>${INPUT_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:43.720243" elapsed="0.111541"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:43.832364" level="INFO">Typing text 'secret_sauce' into text field 'xpath=//input[@data-test='password']'.</msg>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:43.832008" elapsed="0.065565"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:43.898364" level="INFO">Clicking button 'xpath=//input[@data-test='login-button']'.</msg>
+<arg>${BUTTON_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:43.897833" elapsed="5.093783"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:48.991955" elapsed="0.015915"/>
+</kw>
+<arg>${PERFORMANCE_USER}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Realiza login com o usuário e senha</doc>
+<status status="PASS" start="2025-11-15T14:22:43.719812" elapsed="5.288211"/>
+</kw>
+<kw name="Add Item By Index" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:49.008908" level="INFO">${btn_inventory} = xpath=(//button[contains(@class,"btn_inventory")])[2]</msg>
+<var>${btn_inventory}</var>
+<arg>${BTN_INVENTORY_BY_INDEX}</arg>
+<arg>{btn_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.008673" elapsed="0.000277"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${btn_inventory}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.009097" elapsed="0.019688"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:49.029501" level="INFO">${item_name_locator} = xpath=(//div[contains(@class,'inventory_item_name')])[2]</msg>
+<var>${item_name_locator}</var>
+<arg>${INVENTORY_ITEM_BY_INDEX}</arg>
+<arg>{item_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.029079" elapsed="0.000505"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.049737" level="INFO">${item_name} = Sauce Labs Bike Light</msg>
+<var>${item_name}</var>
+<arg>${item_name_locator}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.029846" elapsed="0.019949"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.050253" level="INFO">Clicking element 'xpath=(//button[contains(@class,"btn_inventory")])[2]'.</msg>
+<arg>${btn_inventory}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.049984" elapsed="0.040345"/>
+</kw>
+<return>
+<value>${item_name}</value>
+<status status="PASS" start="2025-11-15T14:22:49.090447" elapsed="0.000066"/>
+</return>
+<msg time="2025-11-15T14:22:49.090711" level="INFO">${item1} = Sauce Labs Bike Light</msg>
+<var>${item1}</var>
+<arg>2</arg>
+<doc>Adiciona um produto no carrinho baseado no índice da lista</doc>
+<status status="PASS" start="2025-11-15T14:22:49.008344" elapsed="0.082403"/>
+</kw>
+<kw name="Add Item By Index" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:49.091805" level="INFO">${btn_inventory} = xpath=(//button[contains(@class,"btn_inventory")])[4]</msg>
+<var>${btn_inventory}</var>
+<arg>${BTN_INVENTORY_BY_INDEX}</arg>
+<arg>{btn_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.091459" elapsed="0.000393"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${btn_inventory}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.092023" elapsed="0.018191"/>
+</kw>
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:49.111043" level="INFO">${item_name_locator} = xpath=(//div[contains(@class,'inventory_item_name')])[4]</msg>
+<var>${item_name_locator}</var>
+<arg>${INVENTORY_ITEM_BY_INDEX}</arg>
+<arg>{item_index}</arg>
+<arg>${index}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.110577" elapsed="0.000514"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.127781" level="INFO">${item_name} = Sauce Labs Fleece Jacket</msg>
+<var>${item_name}</var>
+<arg>${item_name_locator}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.111485" elapsed="0.016353"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.128320" level="INFO">Clicking element 'xpath=(//button[contains(@class,"btn_inventory")])[4]'.</msg>
+<arg>${btn_inventory}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.128029" elapsed="0.035766"/>
+</kw>
+<return>
+<value>${item_name}</value>
+<status status="PASS" start="2025-11-15T14:22:49.163934" elapsed="0.000074"/>
+</return>
+<msg time="2025-11-15T14:22:49.164249" level="INFO">${item2} = Sauce Labs Fleece Jacket</msg>
+<var>${item2}</var>
+<arg>4</arg>
+<doc>Adiciona um produto no carrinho baseado no índice da lista</doc>
+<status status="PASS" start="2025-11-15T14:22:49.091064" elapsed="0.073225"/>
+</kw>
+<kw name="Remove Item By Name" owner="saucedemo_keywords">
+<kw name="Replace String" owner="String">
+<msg time="2025-11-15T14:22:49.165452" level="INFO">${inventory_remove_btn} = xpath=//div[@class="inventory_item"][.//div[text()="Sauce Labs Bike Light"]]//button[text()="Remove"]</msg>
+<var>${inventory_remove_btn}</var>
+<arg>${BTN_REMOVE_INVENTORY_ITEM_BY_NAME}</arg>
+<arg>{inventory_item}</arg>
+<arg>${item}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.165112" elapsed="0.000378"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.165883" level="INFO">Clicking element 'xpath=//div[@class="inventory_item"][.//div[text()="Sauce Labs Bike Light"]]//button[text()="Remove"]'.</msg>
+<arg>${inventory_remove_btn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.165657" elapsed="0.051800"/>
+</kw>
+<arg>${item1}</arg>
+<doc>Remove um produto do carrinho pelo nome</doc>
+<status status="PASS" start="2025-11-15T14:22:49.164623" elapsed="0.052981"/>
+</kw>
+<kw name="Go To Cart" owner="saucedemo_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.218407" level="INFO">Clicking element 'xpath=//div[@id='shopping_cart_container']'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.218184" elapsed="0.063700"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CART_LIST}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.282300" elapsed="0.013607"/>
+</kw>
+<doc>Acessa o carrinho de compras</doc>
+<status status="PASS" start="2025-11-15T14:22:49.217869" elapsed="0.078177"/>
+</kw>
+<kw name="Checkout Complete Order" owner="saucedemo_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.296872" level="INFO">Clicking button 'xpath=//button[@data-test='checkout']'.</msg>
+<arg>${CHECKOUT_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.296648" elapsed="0.066444"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_INFO}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.363468" elapsed="0.017440"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.381419" level="INFO">Typing text 'Test' into text field 'xpath=//input[@id='first-name']'.</msg>
+<arg>${FIRST_NAME}</arg>
+<arg>Test</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.381123" elapsed="0.054751"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.436557" level="INFO">Typing text 'User' into text field 'xpath=//input[@data-test='lastName']'.</msg>
+<arg>${LAST_NAME}</arg>
+<arg>User</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.436226" elapsed="0.054114"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.490921" level="INFO">Typing text '00000000' into text field 'xpath=//input[@data-test='postalCode']'.</msg>
+<arg>${POSTAL_CODE}</arg>
+<arg>00000000</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.490564" elapsed="0.057045"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.548212" level="INFO">Clicking button 'xpath=//input[@data-test='continue']'.</msg>
+<arg>${CONTINUE_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.547886" elapsed="0.060142"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_SUMMARY}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.608728" elapsed="0.017670"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.626893" level="INFO">Clicking button 'xpath=//button[@data-test='finish']'.</msg>
+<arg>${FINISH_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.626625" elapsed="0.057570"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_COMPLETED}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.684425" elapsed="0.013216"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.753276" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Checkout_Completed_Cen%C3%A1rio%202%3A%20Fluxo%20de%20compra%20do%20usu%C3%A1rio%20performance_glitch_user.png"&gt;&lt;img src="Checkout_Completed_Cen%C3%A1rio%202%3A%20Fluxo%20de%20compra%20do%20usu%C3%A1rio%20performance_glitch_user.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Checkout_Completed_${TEST NAME}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.697863" elapsed="0.055570"/>
+</kw>
+<doc>Realiza o fluxo de checkout com dados do usuário</doc>
+<status status="PASS" start="2025-11-15T14:22:49.296346" elapsed="0.457231"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.754011" elapsed="0.053738"/>
+</kw>
+<doc>Faça login como usuário performance_glitch_user, adicione produtos, remova o primeiro adicionado e finalize o pedido.</doc>
+<status status="PASS" start="2025-11-15T14:22:42.379419" elapsed="7.428497"/>
+</test>
+<test id="s1-s1-t3" name="Cenário 3: Usuários standard_user tenta finalizar a compra com o carrinho vazio." line="29">
+<kw name="Open Sauce Login Page" owner="saucedemo_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:49.809295" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com'.</msg>
+<arg>${SAUCE_URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--no-sandbox");add_argument("--disable-dev-shm-usage");add_argument("--remote-debugging-port=9222");add_argument("--disable-gpu");add_argument("--headless=new")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-11-15T14:22:49.809018" elapsed="1.320718"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.130109" elapsed="0.019677"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_USERNAME}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.150050" elapsed="0.018492"/>
+</kw>
+<doc>Abre o browser e navega até a página de login</doc>
+<status status="PASS" start="2025-11-15T14:22:49.808715" elapsed="1.359971"/>
+</kw>
+<kw name="Login As User" owner="saucedemo_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.169617" level="INFO">Typing text 'standard_user' into text field 'xpath=//input[@data-test='username']'.</msg>
+<arg>${INPUT_USERNAME}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.169379" elapsed="0.103246"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.273200" level="INFO">Typing text 'secret_sauce' into text field 'xpath=//input[@data-test='password']'.</msg>
+<arg>${INPUT_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.272860" elapsed="0.073111"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.346560" level="INFO">Clicking button 'xpath=//input[@data-test='login-button']'.</msg>
+<arg>${BUTTON_LOGIN}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.346241" elapsed="0.106307"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INVENTORY_LIST}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.452792" elapsed="0.019319"/>
+</kw>
+<arg>${STANDARD_USER}</arg>
+<arg>${PASSWORD}</arg>
+<doc>Realiza login com o usuário e senha</doc>
+<status status="PASS" start="2025-11-15T14:22:51.168959" elapsed="0.303338"/>
+</kw>
+<kw name="Go To Cart" owner="saucedemo_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.473189" level="INFO">Clicking element 'xpath=//div[@id='shopping_cart_container']'.</msg>
+<arg>${CART_ICON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.472930" elapsed="0.062558"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CART_LIST}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.535791" elapsed="0.016177"/>
+</kw>
+<doc>Acessa o carrinho de compras</doc>
+<status status="PASS" start="2025-11-15T14:22:51.472597" elapsed="0.079509"/>
+</kw>
+<kw name="Cart Should Be Empty" owner="saucedemo_keywords">
+<kw name="Get Element Count" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.561768" level="INFO">${items} = 0</msg>
+<var>${items}</var>
+<arg>${CART_ITEM}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.552729" elapsed="0.009098"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-11-15T14:22:51.562254" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${items}</arg>
+<arg>0</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.562018" elapsed="0.000313"/>
+</kw>
+<doc>Verifica que o carrinho está vazio</doc>
+<status status="PASS" start="2025-11-15T14:22:51.552417" elapsed="0.010031"/>
+</kw>
+<kw name="Checkout Complete Order" owner="saucedemo_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.563521" level="INFO">Clicking button 'xpath=//button[@data-test='checkout']'.</msg>
+<arg>${CHECKOUT_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.563224" elapsed="0.085614"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_INFO}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.649146" elapsed="0.015041"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.664702" level="INFO">Typing text 'Test' into text field 'xpath=//input[@id='first-name']'.</msg>
+<arg>${FIRST_NAME}</arg>
+<arg>Test</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.664413" elapsed="0.061812"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.726830" level="INFO">Typing text 'User' into text field 'xpath=//input[@data-test='lastName']'.</msg>
+<arg>${LAST_NAME}</arg>
+<arg>User</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.726533" elapsed="0.052893"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.779940" level="INFO">Typing text '00000000' into text field 'xpath=//input[@data-test='postalCode']'.</msg>
+<arg>${POSTAL_CODE}</arg>
+<arg>00000000</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.779658" elapsed="0.058824"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.838967" level="INFO">Clicking button 'xpath=//input[@data-test='continue']'.</msg>
+<arg>${CONTINUE_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.838698" elapsed="0.060385"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_SUMMARY}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.899360" elapsed="0.013605"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:51.913459" level="INFO">Clicking button 'xpath=//button[@data-test='finish']'.</msg>
+<arg>${FINISH_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.913186" elapsed="0.056800"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CHECKOUT_COMPLETED}</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.970215" elapsed="0.016391"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-11-15T14:22:52.031906" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Checkout_Completed_Cen%C3%A1rio%203%3A%20Usu%C3%A1rios%20standard_user%20tenta%20finalizar%20a%20compra%20com%20o%20carrinho%20vazio..png"&gt;&lt;img src="Checkout_Completed_Cen%C3%A1rio%203%3A%20Usu%C3%A1rios%20standard_user%20tenta%20finalizar%20a%20compra%20com%20o%20carrinho%20vazio..png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>Checkout_Completed_${TEST NAME}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-11-15T14:22:51.986829" elapsed="0.045204"/>
+</kw>
+<doc>Realiza o fluxo de checkout com dados do usuário</doc>
+<status status="PASS" start="2025-11-15T14:22:51.562795" elapsed="0.469348"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-11-15T14:22:52.032462" elapsed="0.053216"/>
+</kw>
+<doc>Faça Login como usuário standard_user, acessar carrinho e tentar finalizar pedido com carrinho vazio</doc>
+<status status="PASS" start="2025-11-15T14:22:49.808226" elapsed="2.277644"/>
+</test>
+<status status="PASS" start="2025-11-15T14:22:39.690858" elapsed="12.395586"/>
+</suite>
+<status status="PASS" start="2025-11-15T14:22:39.675244" elapsed="12.411800"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="3" fail="0" skip="0">Tests</stat>
+<stat name="Saucedemo Tests" id="s1-s1" pass="3" fail="0" skip="0">Tests.Saucedemo Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
